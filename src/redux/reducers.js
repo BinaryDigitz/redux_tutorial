@@ -1,5 +1,5 @@
-import { createSlice} from '@reduxjs/toolkit'
-import { store } from './store';
+
+import { createSlice, configureStore} from '@reduxjs/toolkit'
 
 export const counterSlice = createSlice({
   name: 'counter',
@@ -16,7 +16,9 @@ export const counterSlice = createSlice({
   }
 });
 const { increment } = counterSlice.actions;
-
+ const store = configureStore({
+    reducer: counterSlice.reducer
+})
 
 const result = store.dispatch(increment(2))
 console.log(result);
